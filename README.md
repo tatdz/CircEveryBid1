@@ -36,8 +36,6 @@ The CCA documentation shows that price discovery happens through bid aggregation
 
 CircEverybid introduces **Dynamic MPS Mutation** — a function family that maps live auction state into a multiplicative factor applied to future issuance steps, leaving already-cleared history untouched.
 
-## 📊 Mathematical Foundation
-
 **CCA Original Clearing (from whitepaper):**
 ```
 Clearing Price = Highest price where: Σ(bid_amount_i) ≥ Q(t) × price
@@ -47,17 +45,6 @@ Clearing Price = Highest price where: Σ(bid_amount_i) ≥ Q(t) × price
 ```
 At checkpoint k: qₜⁿᵉʷ = qₜᵒˡᵈ × F(D, H, Δ, E)/100, ∀t > k
 ```
-
-**Where:**
-- D ∈ [0,1000]: Price discovery progress (how close clearing is to target)  
-- H: Herfindahl-Hirschman Index (bid concentration: Σ(sᵢ²), sᵢ = spendᵢ/Σspend)  
-- Δ: Pyth price deviation in basis points (auction vs. reference price)  
-- E: Market efficiency metric  
-- F: Optimization factor with rules:  
-  - If D < 400: F ← F + 30 (accelerate slow discovery)  
-  - If D > 800: F ← F × 0.85 (decelerate overheated discovery)  
-  - If H > 2500: Scale down F as H increases (anti-whale)  
-  - If Δ > 1500: F = 50 (throttle on large deviation)  
 
 ## 🎯 Price Improvement Potential
 
