@@ -21,7 +21,7 @@ CircEveryBid is a decentralized auction platform combining:
    - Optimal steps are proposed 
    - Future token issuance is adjusted while preserving fairness  
 
-## 🔍 Why Dynamic MPS optimization needed
+## 🔍 Why Dynamic Market Participation Score (MPS) optimization needed
 
 Uniswap's CCA requires auction creators to commit to a fixed supply schedule Q(t) before the auction starts (as described in the CCA whitepaper). This creates a fundamental trade-off:
 
