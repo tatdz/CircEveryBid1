@@ -21,7 +21,7 @@ CircEveryBid is a decentralized auction platform combining:
    - Optimal steps are proposed 
    - Future token issuance is adjusted while preserving fairness  
 
-## 🔍 The Problem: Static Q(t) in CCA
+## 🔍 Why Dynamic MPS optimization needed
 
 Uniswap's CCA requires auction creators to commit to a fixed supply schedule Q(t) before the auction starts (as described in the CCA whitepaper). This creates a fundamental trade-off:
 
@@ -32,48 +32,31 @@ Uniswap's CCA requires auction creators to commit to a fixed supply schedule Q(t
 
 The CCA documentation shows that price discovery happens through bid aggregation, but the mechanism has no way to adjust supply in response to revealed demand patterns.
 
-## 💡 The Solution: Dynamic MPS Mutation
+CircEverybid introduces **Dynamic MPS Mutation/optimization** — a function family that maps live auction state into a multiplicative factor applied to future issuance steps, leaving already-cleared history untouched.
 
-CircEverybid introduces **Dynamic MPS Mutation** — a function family that maps live auction state into a multiplicative factor applied to future issuance steps, leaving already-cleared history untouched.
-
-**CCA Original Clearing (from whitepaper):**
 ```
-Clearing Price = Highest price where: Σ(bid_amount_i) ≥ Q(t) × price
+Clearing Price (from CCA Original whitepaper) = Highest price where: Σ(bid_amount_i) ≥ Q(t) × price
 ```
 
-**CircEverybid Enhancement:**
+**CircEverybid enhancement:**
 ```
 At checkpoint k: qₜⁿᵉʷ = qₜᵒˡᵈ × F(D, H, Δ, E)/100, ∀t > k
 ```
 
 ## 🎯 Price Improvement Potential
 
-In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated **3.22% improvement** in clearing price efficiency. The mechanism works by:
+In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated improvements in clearing price efficiency. The mechanism works by:
 
 - Accelerating supply when discovery is slow (D < 400)  
 - Decelerating supply when discovery is overheated (D > 800)  
 - Dampening whale accumulation (H > 2500)  
 - Throttling on price manipulation signals (Δ > 1500)  
 
-## 👥 Benefits for Different Users
+## 👥 Benefits for Users
 
-### For Auction Creators (Token Projects)
-- ✅ Higher expected revenue through better price alignment  
-- ✅ Reduced risk of underpricing or unsold tokens  
-- ✅ Protection against whale domination  
-- ✅ External price validation via Pyth oracles  
-
-### For Auction Participants (Bidders)
-- ✅ Fairer distribution with anti-whale mechanisms  
-- ✅ Reduced manipulation risk with oracle price guards  
-- ✅ Web2-friendly access via x402 micropayments  
-- ✅ Transparent optimization with real-time metrics  
-
-### For the Uniswap Ecosystem
-- ✅ Enhanced CCA utility without breaking compatibility  
-- ✅ Better liquidity bootstrapping for v4 pools  
-- ✅ Reduced gaming opportunities through dynamic adjustments  
-- ✅ New use cases for x402 and Pyth infrastructure  
+- ✅ For Auction Creators: higher expected revenue through better price alignment, reduced risk of underpricing or unsold tokens, external price validation via Pyth oracles  
+- ✅ For Auction Participants (bidders): fairer distribution with anti-whale mechanisms  
+- ✅ For the Uniswap Ecosystem: enhanced CCA utility without breaking compatibility, better liquidity bootstrapping for v4 pools  
 
 ### Architecture
 Bid Flow (No v4 Hooks)
