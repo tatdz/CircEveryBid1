@@ -152,7 +152,7 @@ Creates ENS subdomains for auctions created on circeverybid (subdomainname.circe
 
 ```bash
 # Clone repository
-git clone https://github.com/tatdz/CircEveryBid
+git clone https://github.com/tatdz/CircEveryBid1
 cd frontend
 
 # Install dependencies
