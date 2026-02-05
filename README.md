@@ -1,11 +1,11 @@
 
-# CircEveryBid - Private Cross-Chain Auctions with dynamic MPS otimization and cross-chain deposits
+# CircEveryBid - Private Auctions with dynamic MPS otimization and cross-chain deposits
 
 ## 🎯 Overview
 
 CircEveryBid is a decentralized auction platform combining:
 - **🔒 Uniswap v4** - Privacy-preserving CCA auctions with ZK sealed bids, Dynamic MPS optimization
-- **🔵 Circle** - Multi-chain wallets, Gateway onboarding
+- **🔵 Circle** - Sourcing USDC from any supported chain via CCTP, routing via Gateway and settling into auctions without fragmenting the UX
 - **🏅 ENS** - Reputation-based auction creation verification - serves as a ledger of initial auction data
 - **⚡ Arc** - Gateway wallets on Arc (among other) used for bidding 
 - **🔐 ZK Privacy** - Poseidon commitments with nullifier registry
@@ -21,7 +21,7 @@ CircEveryBid is a decentralized auction platform combining:
    - Optimal steps are proposed 
    - Future token issuance is adjusted while preserving fairness  
 
-## 🔍 Why Dynamic MPS optimization needed
+#### 🔍 Why Dynamic Market Participation Score (MPS) optimization needed
 
 Uniswap's CCA requires auction creators to commit to a fixed supply schedule Q(t) before the auction starts (as described in the CCA whitepaper). This creates a fundamental trade-off:
 
@@ -43,7 +43,7 @@ Clearing Price (from CCA Original whitepaper) = Highest price where: Σ(bid_amou
 At checkpoint k: qₜⁿᵉʷ = qₜᵒˡᵈ × F(D, H, Δ, E)/100, ∀t > k
 ```
 
-## 🎯 Price Improvement Potential
+#### 🎯 Price Improvement Potential
 
 In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated improvements in clearing price efficiency. The mechanism works by:
 
@@ -52,7 +52,7 @@ In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated improvements 
 - Dampening whale accumulation (H > 2500)  
 - Throttling on price manipulation signals (Δ > 1500)  
 
-## 👥 Benefits for Users
+#### 👥 Benefits for Users
 
 - ✅ For Auction Creators: higher expected revenue through better price alignment, reduced risk of underpricing or unsold tokens, external price validation via Pyth oracles  
 - ✅ For Auction Participants (bidders): fairer distribution with anti-whale mechanisms  
@@ -146,13 +146,45 @@ Creates ENS subdomains for auctions created on circeverybid (subdomainname.circe
 - Node.js 18+ and npm
 - MetaMask or Web3 wallet
 - Circle API credentials 
-- save variables from .env.example
+- save variables from .env.example:
+//env.example
+- CIRCLE_API_BASE_URL = "https://api.circle.com/v1/w3s"
+- NEXT_PUBLIC_CIRCLE_APP_ID = "yourappid"
+- CIRCLE_API_KEY="yourapikey"
+- CIRCLE_ENTITY_SECRET="yoursecret"
+
+- USDC_ADDRESS = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238"
+- EURC_ADDRESS = "0xE4920cDcC1a3417B6A1C9Ee37e5A83ef920cb0a9"
+- NEXT_PUBLIC_CCTP_TOKEN_MESSENGER = "0x9f3B8679c73C2Fef8b59B4f3444d4e156fb70AA5"
+- NEXT_PUBLIC_CCTP_MESSAGE_TRANSMITTER = "0x7865fAfC2db2093669d92c0F33AeEF291086BEFD"
+- NEXT_PUBLIC_STEP_READER_ADDRESS = "0x4e2E31970ec1c7B5b0309cB9e92EE498Dd9f6a24"
+- NEXT_PUBLIC_OPTIMIZER_ADDRESS = "0x5c930236D4f60cEC9E18bD1E9c26Da0977EB7F94"
+- NEXT_PUBLIC_MPS_MUTATOR = "0x7284bf89BB9CE144F9d723C61fb73343CC07c5B9"
+- NEXT_PUBLIC_POSEIDON_COMMITMENT_ADDRESS = "0xea6C2C78992152e2Df1Df9aDeE962E6e4472cA28"
+- NEXT_PUBLIC_PYTH_ADDRESS = "0xDd24F84d36BF92C65F92307595335bdFab5Bbd21"
+- NEXT_PUBLIC_PYTH_ETH_USD = "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace"
+- NEXT_PUBLIC_PYTH_USDC_USD = "0xeaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a"
+- NEXT_PUBLIC_ENS_DOMAIN = "circeverybid.eth" or your domain 
+- NEXT_PUBLIC_ENS_REGISTRY_ADDRESS = "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+- NEXT_PUBLIC_ENS_PUBLIC_RESOLVER = "0xE99638b40E4Fff0129D56f03b55b6bbC4BBE49b5"
+- NEXT_PUBLIC_ENS_PARENT_NODE = "0x565770904a8958c98b502a492796a3c0286ef5341c4c8670a794368ab351ede"
+- ARC_USDC = "0x3600000000000000000000000000000000000000"
+- ARC_EURC = "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a"
+- NEXT_PUBLIC_POSEIDON_T3 = "0x3333333C0A88F9BE4fd23ed0536F9B6c427e3B93"
+- NEXT_PUBLIC_POSEIDON_T4 = "0x4443338EF595F44e0121df4C21102677B142ECF0"
+- NEXT_PUBLIC_POSEIDON_T5 = "0x555333f3f677Ca3930Bf7c56ffc75144c51D9767"
+- NEXT_PUBLIC_POSEIDON_T6 = "0x666333F371685334CdD69bdDdaFBABc87CE7c7Db"
+
+- PRIVATE_KEY=yourkey
+
+- ALCHEMY_ARC_SEPOLIA_URL=https://arc-testnet.g.alchemy.com/v2/-yourkey
+- ALCHEMY_ETHEREUM_SEPOLIA_URL=https://eth-sepolia.g.alchemy.com/v2/-yourkey
 
 ### Installation
 
 ```bash
 # Clone repository
-git clone https://github.com/tatdz/CircEveryBid
+git clone https://github.com/tatdz/CircEveryBid1
 cd frontend
 
 # Install dependencies
