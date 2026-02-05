@@ -21,7 +21,7 @@ CircEveryBid is a decentralized auction platform combining:
    - Optimal steps are proposed 
    - Future token issuance is adjusted while preserving fairness  
 
-## 🔍 Why Dynamic Market Participation Score (MPS) optimization needed
+#### 🔍 Why Dynamic Market Participation Score (MPS) optimization needed
 
 Uniswap's CCA requires auction creators to commit to a fixed supply schedule Q(t) before the auction starts (as described in the CCA whitepaper). This creates a fundamental trade-off:
 
@@ -43,7 +43,7 @@ Clearing Price (from CCA Original whitepaper) = Highest price where: Σ(bid_amou
 At checkpoint k: qₜⁿᵉʷ = qₜᵒˡᵈ × F(D, H, Δ, E)/100, ∀t > k
 ```
 
-## 🎯 Price Improvement Potential
+#### 🎯 Price Improvement Potential
 
 In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated improvements in clearing price efficiency. The mechanism works by:
 
@@ -52,7 +52,7 @@ In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated improvements 
 - Dampening whale accumulation (H > 2500)  
 - Throttling on price manipulation signals (Δ > 1500)  
 
-## 👥 Benefits for Users
+#### 👥 Benefits for Users
 
 - ✅ For Auction Creators: higher expected revenue through better price alignment, reduced risk of underpricing or unsold tokens, external price validation via Pyth oracles  
 - ✅ For Auction Participants (bidders): fairer distribution with anti-whale mechanisms  
