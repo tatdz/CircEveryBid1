@@ -1,11 +1,11 @@
 
-# CircEveryBid - Private Cross-Chain Auctions with dynamic MPS otimization and cross-chain deposits
+# CircEveryBid - Private Auctions with dynamic MPS otimization and cross-chain deposits
 
 ## 🎯 Overview
 
 CircEveryBid is a decentralized auction platform combining:
 - **🔒 Uniswap v4** - Privacy-preserving CCA auctions with ZK sealed bids, Dynamic MPS optimization
-- **🔵 Circle** - Multi-chain wallets, Gateway onboarding
+- **🔵 Circle** - Sourcing USDC from any supported chain via CCTP, routing via Gateway and settling into auctions without fragmenting the UX
 - **🏅 ENS** - Reputation-based auction creation verification - serves as a ledger of initial auction data
 - **⚡ Arc** - Gateway wallets on Arc (among other) used for bidding 
 - **🔐 ZK Privacy** - Poseidon commitments with nullifier registry
