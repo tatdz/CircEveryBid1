@@ -66,14 +66,15 @@ In prototype testing on Sepolia, Dynamic MPS Mutation demonstrated improvements 
 - ✅ For the Uniswap Ecosystem: enhanced CCA utility without breaking compatibility, better liquidity bootstrapping for v4 pools  
 
 ### Architecture
-Bid Flow (No v4 Hooks)
-User Creates Bid -> Seal with Poseidon Hash -> Submit to PoseidonBidCommitment Contract -> ZK Verification -> Reveal at Auction End 
+#### Bid Flow 
+User Creates Bid --> can select Gateway USDC balance to use its USDC for bidding -> Seal with Poseidon Hash -> Submit to PoseidonBidCommitment Contract -> ZK Verification -> Reveal at Auction End 
 
-Dynamic MPS Optimization --> submit at least 2 sealed bids --> StepStorageReader contract reads CCA state for optimization --> Optimizer contract calculates real-time HHI based on bid distribution --> Fetch live ETH/USD prices from Pyth oracles --> Compute optimal tick spacing to maximize participation --> Submit MPS updates to the on-chain MPS Mutator contract
+#### Dynamic MPS Optimization
+Submit at least 2 sealed bids --> StepStorageReader contract reads CCA state for optimization --> Optimizer contract calculates real-time HHI based on bid distribution --> Fetch live ETH/USD prices from Pyth oracles --> Compute optimal tick spacing to maximize participation --> Submit MPS updates to the on-chain MPS Mutator contract
 
-Cross-Chain CCTP Flow
-Source Chain USDC -> Circle CCTP depositForBurn -> Attestation (~15 min) -> Destination Chain Mint
-Supported: Ethereum Sepolia, Base Sepolia, Arbitrum Sepolia, OP Sepolia, Polygon Amoy
+#### Cross-Chain CCTP and Gateway Flow
+Source Chain USDC -> Circle CCTP depositForBurn -> Attestation (~15 min) -> Destination Chain Mint (where Gateway balance is)
+Use Gatewaway balance for bidding
 
 ### Key Contracts 
 POSEIDON_COMMITMENT: 0xea6C2C78992152e2Df1Df9aDeE962E6e4472cA28 - ZK bid commitments
