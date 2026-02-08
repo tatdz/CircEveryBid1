@@ -76,18 +76,17 @@ Submit at least 2 sealed bids --> StepStorageReader contract reads CCA state for
 Source Chain USDC -> Circle CCTP depositForBurn -> Attestation (~15 min) -> Destination Chain Mint (where Gateway balance is)
 Use Gatewaway balance for bidding
 
-### Key Contracts 
-POSEIDON_COMMITMENT: 0xea6C2C78992152e2Df1Df9aDeE962E6e4472cA28 - ZK bid commitments
-OPTIMIZER: 0x5c930236D4f60cEC9E18bD1E9c26Da0977EB7F94 - Price optimization
-MPS_MUTATOR: 0x7284bf89BB9CE144F9d723C61fb73343CC07c5B9 - MPS mutations
-ENS_AUCTION_REGISTRY: 0xc9cb3111942e4cb5cD9550E04ee3901C6E4ce27b - ENS subdomains
-FACTORY: 0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D - Auction creation
+### Key Contracts (to create Continious Clearing Auctions, submit the private bids and optimize the auctions)
+- POSEIDON_COMMITMENT: 0xea6C2C78992152e2Df1Df9aDeE962E6e4472cA28 - ZK bid commitments
+- OPTIMIZER: 0x5c930236D4f60cEC9E18bD1E9c26Da0977EB7F94 - Price optimization
+- MPS_MUTATOR: 0x7284bf89BB9CE144F9d723C61fb73343CC07c5B9 - MPS mutations
+- FACTORY: 0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D - Auction creation
 
-Circle Integration
+#### Circle Integration
 Gateway: Wallet onboarding, use gateway wallet's USDC balance (Arc testnet, Base Sepolia, Ethereum Sepolia, etc) for bidding
 CCTP: Cross-chain USDC transfers (9 supported chains)
 
-ENS Integration
+#### ENS Integration
 Namestone API for subdomain management 
 Creates ENS subdomains for auctions created on circeverybid (subdomainname.circeverybid.eth), the ENS subdomain acts as a ledger for initial data of auction and saved as text record of the auction subdomain
 
