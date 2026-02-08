@@ -1,6 +1,13 @@
 
 # CircEveryBid - Private Auctions with dynamic MPS otimization and cross-chain deposits
 
+##### TX for creating sealed bids:
+- https://sepolia.etherscan.io/tx/0x110f2056186abc50802bf9e4de09e70b9d5d8838a7312c78eb3bde7661c448b2
+- https://sepolia.etherscan.io/tx/0x4405dda5887c44c949bf55f868a67de8e44914d521912f63f314dd519304c619
+
+##### TX for nitalizing distribution:
+- https://sepolia.etherscan.io/tx/0x4fb4347b587a2cea2708be6a830fdf17300916646a68b9a9b7f2dad09c3a93a5
+
 ## 🎯 Overview
 
 CircEveryBid is a decentralized auction platform combining:
